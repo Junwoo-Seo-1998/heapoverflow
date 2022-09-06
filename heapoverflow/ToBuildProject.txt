@@ -1,0 +1,2 @@
+simply you need to run Make-Solution.bat in order to generate visual stuido solution file.
+and build it you will see exe files inside of bin folder.

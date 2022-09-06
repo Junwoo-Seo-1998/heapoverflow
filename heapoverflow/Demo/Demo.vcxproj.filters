@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Layer">
+      <UniqueIdentifier>{6287950D-CE9B-BDBE-971D-611E03F1B9EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer\Common">
+      <UniqueIdentifier>{5A32BC42-4695-4BE7-EF1A-849DDB5C176A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer\Fog">
+      <UniqueIdentifier>{AD660962-19D1-BDD8-620F-6F7ECEB89B2D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer\Grass">
+      <UniqueIdentifier>{5179110A-BD2E-8AFF-4623-84D6B2D78003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer\Shadow">
+      <UniqueIdentifier>{17568967-03B9-180C-AC3E-51C29880E48E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer\Toon">
+      <UniqueIdentifier>{11EB3DA3-FDA2-7FF0-66AA-584C52811AE1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{B3F7140E-1F0C-3DBF-E88D-E01E546139F0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Layer\Common\CommonSceneGUILayer.h">
+      <Filter>Layer\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Layer\DemoLayer.h">
+      <Filter>Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Layer\Fog\FogGUILayer.h">
+      <Filter>Layer\Fog</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Layer\Grass\GrassGUILayer.h">
+      <Filter>Layer\Grass</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Layer\Shadow\ShadowGUILayer.h">
+      <Filter>Layer\Shadow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Layer\Toon\ToonGUILayer.h">
+      <Filter>Layer\Toon</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\FogScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\GrassScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\ShadowScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\ToonScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Layer\Common\CommonSceneGUILayer.cpp">
+      <Filter>Layer\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Layer\DemoLayer.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Layer\Fog\FogGUILayer.cpp">
+      <Filter>Layer\Fog</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Layer\Grass\GrassGUILayer.cpp">
+      <Filter>Layer\Grass</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Layer\Shadow\ShadowGUILayer.cpp">
+      <Filter>Layer\Shadow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Layer\Toon\ToonGUILayer.cpp">
+      <Filter>Layer\Toon</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\FogScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\GrassScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\ShadowScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\ToonScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+</Project>

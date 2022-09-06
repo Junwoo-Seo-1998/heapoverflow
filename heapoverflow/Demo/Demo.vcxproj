@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6A15847C-564C-850D-FF38-6B10EB4E010F}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Demo</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\bin\Debug-windows-x86_64\Demo\</OutDir>
+    <IntDir>..\bin-int\Debug-windows-x86_64\Demo\</IntDir>
+    <TargetName>Demo</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\Release-windows-x86_64\Demo\</OutDir>
+    <IntDir>..\bin-int\Release-windows-x86_64\Demo\</IntDir>
+    <TargetName>Demo</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DisableSpecificWarnings>4819;4006;26495;4133;4996;4201;26439;4312;26812;4244;4267;4702;4789;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;..\HOF-Core\src;..\HOF-Core\Dependencies\GLEW\include;..\HOF-Core\Dependencies\GLFW\include;..\HOF-Core\Dependencies\imgui;..\HOF-Core\Dependencies\glm;..\HOF-Core\Dependencies\entt\include;..\HOF-Core\Dependencies\TinyObjLoader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "../Demo/resource" "../bin/Debug-windows-x86_64/Demo/resource" /e /h /k /y /i
+IF EXIST "..\HOF-Core\Dependencies\assimp\Debug\assimp-vc142-mtd.dll"\ (xcopy /Q /E /Y /I "..\HOF-Core\Dependencies\assimp\Debug\assimp-vc142-mtd.dll" "..\bin\Debug-windows-x86_64\Demo" &gt; nul) ELSE (xcopy /Q /Y /I "..\HOF-Core\Dependencies\assimp\Debug\assimp-vc142-mtd.dll" "..\bin\Debug-windows-x86_64\Demo" &gt; nul)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DisableSpecificWarnings>4819;4006;26495;4133;4996;4201;26439;4312;26812;4244;4267;4702;4789;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;..\HOF-Core\src;..\HOF-Core\Dependencies\GLEW\include;..\HOF-Core\Dependencies\GLFW\include;..\HOF-Core\Dependencies\imgui;..\HOF-Core\Dependencies\glm;..\HOF-Core\Dependencies\entt\include;..\HOF-Core\Dependencies\TinyObjLoader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "../Demo/resource" "../bin/Release-windows-x86_64/Demo/resource" /e /h /k /y /i
+IF EXIST "..\HOF-Core\Dependencies\assimp\Release\assimp-vc142-mt.dll"\ (xcopy /Q /E /Y /I "..\HOF-Core\Dependencies\assimp\Release\assimp-vc142-mt.dll" "..\bin\Release-windows-x86_64\Demo" &gt; nul) ELSE (xcopy /Q /Y /I "..\HOF-Core\Dependencies\assimp\Release\assimp-vc142-mt.dll" "..\bin\Release-windows-x86_64\Demo" &gt; nul)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Layer\Common\CommonSceneGUILayer.h" />
+    <ClInclude Include="src\Layer\DemoLayer.h" />
+    <ClInclude Include="src\Layer\Fog\FogGUILayer.h" />
+    <ClInclude Include="src\Layer\Grass\GrassGUILayer.h" />
+    <ClInclude Include="src\Layer\Shadow\ShadowGUILayer.h" />
+    <ClInclude Include="src\Layer\Toon\ToonGUILayer.h" />
+    <ClInclude Include="src\Scene\FogScene.h" />
+    <ClInclude Include="src\Scene\GrassScene.h" />
+    <ClInclude Include="src\Scene\ShadowScene.h" />
+    <ClInclude Include="src\Scene\ToonScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Layer\Common\CommonSceneGUILayer.cpp" />
+    <ClCompile Include="src\Layer\DemoLayer.cpp" />
+    <ClCompile Include="src\Layer\Fog\FogGUILayer.cpp" />
+    <ClCompile Include="src\Layer\Grass\GrassGUILayer.cpp" />
+    <ClCompile Include="src\Layer\Shadow\ShadowGUILayer.cpp" />
+    <ClCompile Include="src\Layer\Toon\ToonGUILayer.cpp" />
+    <ClCompile Include="src\Scene\FogScene.cpp" />
+    <ClCompile Include="src\Scene\GrassScene.cpp" />
+    <ClCompile Include="src\Scene\ShadowScene.cpp" />
+    <ClCompile Include="src\Scene\ToonScene.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HOF-Core\HOF-Core.vcxproj">
+      <Project>{38F80D56-24C5-6861-4DDE-5609390A9EEF}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

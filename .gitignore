@@ -1,0 +1,12 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+
+
+# Build results
+bin/
+bin-int/
+
+.vs/
