@@ -20,4 +20,5 @@ public:
 
 private:
 	std::stack<std::shared_ptr<hof::Layer>> m_OverlayLayerStack;
+	hof::Entity monkey;
 };

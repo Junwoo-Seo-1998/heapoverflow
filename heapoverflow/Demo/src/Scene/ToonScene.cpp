@@ -39,16 +39,17 @@ void ToonScene::OnLoad()
 	
 	auto material = std::make_shared<Material>(AssetManager::GetShaderManager()->Get("ToonShader"));
 
-	auto monkey = CreateEntity();
+	monkey = CreateEntity();
 	monkey.AddComponent<MeshRendererComponent>(AssetManager::GetMesh("Monkey"), material);
 	monkey.GetComponent<TransformComponent>().Scale={ 10.f, 10.f, 10.f };
+	
 
 	Renderer::SetClearColor({ 0.2f,0.3f,0.5f,1.0f });
 }
 
 void ToonScene::OnUpdate([[maybe_unused]]float dt)
 {
-
+	monkey.GetComponent<hof::TransformComponent>().Rotation.y += glm::sin(glm::radians(30.f)) * dt;
 }
 
 void ToonScene::OnUnload()
