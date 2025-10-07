@@ -1,4 +1,4 @@
-#version 330 core		
+#version 410 core
 
 uniform vec3 u_Color=vec3(0.7255, 0.7216, 0.4275);
 

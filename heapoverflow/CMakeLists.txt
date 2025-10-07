@@ -70,6 +70,20 @@ if(WIN32)
     add_library(GLFW STATIC ${GLFW_COMMON_SOURCES} ${GLFW_PLATFORM_SOURCES})
     target_compile_definitions(GLFW PUBLIC _GLFW_WIN32)
     target_link_libraries(GLFW PRIVATE opengl32 gdi32 user32 shell32)
+elseif(APPLE)
+    enable_language(OBJC OBJCXX)
+    file(GLOB GLFW_PLATFORM_SOURCES
+        "HOF-Core/Dependencies/GLFW/src/cocoa_init.m"
+        "HOF-Core/Dependencies/GLFW/src/cocoa_joystick.m"
+        "HOF-Core/Dependencies/GLFW/src/cocoa_monitor.m"
+        "HOF-Core/Dependencies/GLFW/src/cocoa_window.m"
+        "HOF-Core/Dependencies/GLFW/src/nsgl_context.m"
+        "HOF-Core/Dependencies/GLFW/src/posix_thread.c"
+        "HOF-Core/Dependencies/GLFW/src/cocoa_time.c"
+    )
+    add_library(GLFW STATIC ${GLFW_COMMON_SOURCES} ${GLFW_PLATFORM_SOURCES})
+    target_compile_definitions(GLFW PUBLIC _GLFW_COCOA)
+    target_link_libraries(GLFW PRIVATE "-framework Cocoa" "-framework IOKit" "-framework CoreFoundation" "-framework OpenGL")
 else() # Assuming Linux/X11
     file(GLOB GLFW_PLATFORM_SOURCES
         "HOF-Core/Dependencies/GLFW/src/x11_init.c"

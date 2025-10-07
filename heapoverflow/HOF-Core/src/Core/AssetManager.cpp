@@ -6,6 +6,7 @@ Project: CS250
 Author: Junwoo Seo
 -----------------------------------------------------------------*/
 #include "AssetManager.h"
+#include "Core/Utils/FileSystem.h"
 #include "Utils/ObjLoader.h"
 #include <string>
 #include <iostream>
@@ -31,9 +32,10 @@ namespace hof
 
 	void AssetManager::LoadObj(const std::string& mesh_name, const std::string& mesh_path, [[maybe_unused]] bool print_info)
 	{
+		auto absolute_path = hof::Utils::G_ExecutableDirectory / mesh_path;
 		auto mesh = std::make_shared<Mesh>();
-		hof::LoadObj(mesh_path, *mesh, print_info);
-		std::cout << "Loaded model: " << mesh_name << " from " << mesh_path << std::endl;
+		hof::LoadObj(absolute_path.string(), *mesh, print_info);
+		std::cout << "Loaded model: " << mesh_name << " from " << absolute_path.string() << std::endl;
 		inner::s_Meshs.insert({ mesh_name, mesh });
 	}
 

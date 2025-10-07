@@ -26,6 +26,7 @@ namespace hof
 	void WindowContext::Init()
 	{
 		glfwMakeContextCurrent(m_Window);
+		glewExperimental = GL_TRUE;
 		GLenum err=glewInit();
 		if (GLEW_OK != err)
 		{

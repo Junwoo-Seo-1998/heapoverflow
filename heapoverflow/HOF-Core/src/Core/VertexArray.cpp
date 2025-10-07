@@ -12,7 +12,7 @@ namespace hof
 {
 	VertexArray::VertexArray()
 	{
-		glCreateVertexArrays(1, &m_VertexArrayID);
+		glGenVertexArrays(1, &m_VertexArrayID);
 	}
 
 	VertexArray::~VertexArray()

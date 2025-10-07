@@ -6,6 +6,7 @@ Project: CS250
 Author: Junwoo Seo
 -----------------------------------------------------------------*/
 #include "shader.h"
+#include "Core/Utils/FileSystem.h"
 #include "GL/glew.h"
 #include <fstream>
 #include <iostream>
@@ -236,7 +237,8 @@ namespace hof
 	{
 		std::cout << "Compile : " << src.substr(src.find_last_of('/')+1)<<std::endl;
 		
-		std::ifstream src_stream(src);
+		auto absolute_path = hof::Utils::G_ExecutableDirectory / src;
+		std::ifstream src_stream(absolute_path);
 		std::string shader_src_string;
 		if (src_stream.is_open())
 		{

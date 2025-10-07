@@ -10,3 +10,6 @@ bin/
 bin-int/
 
 .vs/
+
+# macOS-specific files
+.DS_Store

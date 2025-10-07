@@ -9,8 +9,14 @@ Author: Junwoo Seo
 #include "Core/Application.h"
 
 extern hof::Application* CoreMain();
-int main(int /*argc*/, char** /*argv*/) try
+
+#include <filesystem>
+#include "Core/Utils/FileSystem.h"
+
+int main(int argc, char** argv) try
 {
+	hof::Utils::G_ExecutableDirectory = std::filesystem::path(argv[0]).parent_path();
+
 	auto app = CoreMain();
 	app->OnInit();
 	app->Run();

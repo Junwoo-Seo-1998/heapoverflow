@@ -82,14 +82,14 @@ namespace hof
 
 	VertexBuffer::VertexBuffer(unsigned size)
 	{
-		glCreateBuffers(1, &m_BufferID);
+		glGenBuffers(1, &m_BufferID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_BufferID);
 		glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
 	}
 
 	VertexBuffer::VertexBuffer(void* vertices, unsigned size)
 	{
-		glCreateBuffers(1, &m_BufferID);
+		glGenBuffers(1, &m_BufferID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_BufferID);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 	}
@@ -118,7 +118,7 @@ namespace hof
 	IndexBuffer::IndexBuffer(unsigned* indices, unsigned count)
 		:m_Count(count)
 	{
-		glCreateBuffers(1, &m_BufferID);
+		glGenBuffers(1, &m_BufferID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_BufferID);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned) * count, indices, GL_DYNAMIC_DRAW);
 	}

@@ -1,4 +1,4 @@
-#version 450 core
+#version 410 core
 
 in vec4 point_color;
 out vec4 color;
