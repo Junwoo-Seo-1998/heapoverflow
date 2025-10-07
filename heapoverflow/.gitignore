@@ -1,0 +1,23 @@
+# Build output from CMake
+/build/
+
+# Build output from Premake
+/bin/
+/bin-int/
+
+# Visual Studio generated files
+.vs/
+*.VC.db
+*.opensdf
+*.sdf
+*.suo
+*.user
+*.vcxproj
+*.vcxproj.filters
+*.sln
+
+# ImGui user settings
+imgui.ini
+
+# User-specific files
+*.userprefs

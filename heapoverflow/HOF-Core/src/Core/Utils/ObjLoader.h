@@ -6,6 +6,7 @@ Project: CS250
 Author: Junwoo Seo
 -----------------------------------------------------------------*/
 #pragma once
+#include <cstring>
 #include <map>
 #include <vector>
 #include <glm/glm.hpp>
@@ -18,6 +19,11 @@ namespace hof
 		glm::vec3 position;
 		//glm::vec2 uv;
 		glm::vec3 normal;
+		bool operator==(const PackedVertex& other) const
+		{
+			return position == other.position && normal == other.normal;
+		}
+
 		bool operator<(const PackedVertex that) const {
 			return memcmp(this, &that, sizeof(PackedVertex))>0;
 		}

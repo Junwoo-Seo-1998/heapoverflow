@@ -6,7 +6,7 @@ Project: CS250
 Author: Junwoo Seo
 -----------------------------------------------------------------*/
 #include "AssetManager.h"
-#include "Utils/AssimpLoaderHelper.h"
+#include "Utils/ObjLoader.h"
 #include <string>
 #include <iostream>
 
@@ -31,14 +31,9 @@ namespace hof
 
 	void AssetManager::LoadObj(const std::string& mesh_name, const std::string& mesh_path, [[maybe_unused]] bool print_info)
 	{
-		//todo :replace with assim
-		//Assimp::Importer importer;
-		//importer.ReadFile(mesh_path, aiProcess_Triangulate | aiProcess_FlipUVs);
-		//todo: check mesh already exists
-		//hof::LoadObj(mesh_path, *mesh, print_info);//may be rename this func?
-		
 		auto mesh = std::make_shared<Mesh>();
-		LoadModel(mesh_path, mesh);
+		hof::LoadObj(mesh_path, *mesh, print_info);
+		std::cout << "Loaded model: " << mesh_name << " from " << mesh_path << std::endl;
 		inner::s_Meshs.insert({ mesh_name, mesh });
 	}
 

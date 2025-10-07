@@ -36,7 +36,7 @@ namespace hof
 
 		void* GetGLFWWindow() const { return m_WindowData.window; }
 		
-		bool IsVSyncOn() { m_WindowData.isVSyncOn; }
+		bool IsVSyncOn() { return m_WindowData.isVSyncOn; }
 		std::pair<unsigned int, unsigned int> GetWidthHeight() const;
 		unsigned int GetWidth() { return m_WindowData.width; }
 		unsigned int GetHeight() { return m_WindowData.height; }

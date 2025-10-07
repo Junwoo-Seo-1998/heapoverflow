@@ -69,7 +69,7 @@ void ShadowGUILayer::OnGuiRender()
 	ImGui::Text("Shadow Depth Texture");
 	ImGui::Separator();
 	uint32_t textureID = DepthRenderingFrameBuffer->GetColorTexture(0);
-	ImGui::Image((void*)textureID, ImVec2{ 400,400 }, ImVec2{ 0,1 }, ImVec2{ 1,0 });
+	ImGui::Image((ImTextureID)(uintptr_t)textureID, ImVec2{ 400,400 }, ImVec2{ 0,1 }, ImVec2{ 1,0 });
 	ImGui::End();
 }
 

@@ -5,6 +5,7 @@ written consent of DigiPen Institute of Technology is prohibited.
 Project: CS250
 Author: Junwoo Seo
 -----------------------------------------------------------------*/
+#include <algorithm>
 #include "LayerManager.h"
 #include "Layer.h"
 namespace hof
