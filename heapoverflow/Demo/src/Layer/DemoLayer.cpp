@@ -6,6 +6,7 @@ Project: CS250
 Author: Junwoo Seo
 -----------------------------------------------------------------*/
 #include "DemoLayer.h"
+#include "Core/Event/ApplicationEvents/ApplicationEvent.h"
 
 #include <iostream>
 
@@ -96,15 +97,14 @@ void DemoLayer::OnGuiRender()
 
 void DemoLayer::OnEvent(hof::Event& event)
 {
-	hof::EventDispatcher dispatcher(event);
-
-	dispatcher.Dispatch<hof::WindowResizeEvent>([](hof::WindowResizeEvent& event)->bool
+	if (event.GetEventType() == hof::EventType::WindowResize)
 	{
+		hof::WindowResizeEvent& e = static_cast<hof::WindowResizeEvent&>(event);
 		auto view = hof::SceneManager::GetCurrentScene()->GetRegistry().view<hof::TransformComponent, hof::CameraComponent>();
 		hof::Entity cam_entt(view.front(), hof::SceneManager::GetCurrentScene().get());
-		auto& cam=cam_entt.GetComponent<hof::CameraComponent>();
-		auto [width, height] = event.GetWidthAndHeight();
+		hof::CameraComponent& cam = cam_entt.GetComponent<hof::CameraComponent>();
+		auto [width, height] = e.GetWidthAndHeight();
 		cam.Camera.SetViewportSize(width, height);
-		return true;
-	});
+		event.m_Handled = true;
+	}
 }

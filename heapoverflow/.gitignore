@@ -1,5 +1,6 @@
 # Build output from CMake
 /build/
+/build-linux/
 
 # Build output from Premake
 /bin/

@@ -1380,10 +1380,16 @@
     <ClInclude Include="src\Core\Utils\AssimpLoaderHelper.h">
       <Filter>src\Core\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Utils\FileSystem.h">
+      <Filter>src\Core\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="src\Core\Utils\KeyCodes.h">
       <Filter>src\Core\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\Utils\MouseCodes.h">
+      <Filter>src\Core\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Utils\ObjLoader.h">
       <Filter>src\Core\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\Utils\Utils.h">
@@ -1479,6 +1485,9 @@
       <Filter>src\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\Utils\AssimpLoaderHelper.cpp">
+      <Filter>src\Core\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Utils\ObjLoader.cpp">
       <Filter>src\Core\Utils</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\VertexArray.cpp">

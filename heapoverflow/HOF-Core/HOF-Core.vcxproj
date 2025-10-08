@@ -57,11 +57,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <DisableSpecificWarnings>4819;4006;26495;4133;4996;4201;26439;4312;26812;4244;4267;4702;4789;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;Dependencies\GLEW\include;Dependencies\GLFW\include;Dependencies\imgui;Dependencies\glm;Dependencies\entt\include;Dependencies\TinyObjLoader\include;Dependencies\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/EHsc /MTd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -78,14 +78,14 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <DisableSpecificWarnings>4819;4006;26495;4133;4996;4201;26439;4312;26812;4244;4267;4702;4789;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;Dependencies\GLEW\include;Dependencies\GLFW\include;Dependencies\imgui;Dependencies\glm;Dependencies\entt\include;Dependencies\TinyObjLoader\include;Dependencies\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/EHsc /MT %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -539,8 +539,10 @@
     <ClInclude Include="src\Core\Shader.h" />
     <ClInclude Include="src\Core\ShaderManager.h" />
     <ClInclude Include="src\Core\Utils\AssimpLoaderHelper.h" />
+    <ClInclude Include="src\Core\Utils\FileSystem.h" />
     <ClInclude Include="src\Core\Utils\KeyCodes.h" />
     <ClInclude Include="src\Core\Utils\MouseCodes.h" />
+    <ClInclude Include="src\Core\Utils\ObjLoader.h" />
     <ClInclude Include="src\Core\Utils\Utils.h" />
     <ClInclude Include="src\Core\VertexArray.h" />
     <ClInclude Include="src\Core\WindowContext.h" />
@@ -574,6 +576,7 @@
     <ClCompile Include="src\Core\Shader.cpp" />
     <ClCompile Include="src\Core\ShaderManager.cpp" />
     <ClCompile Include="src\Core\Utils\AssimpLoaderHelper.cpp" />
+    <ClCompile Include="src\Core\Utils\ObjLoader.cpp" />
     <ClCompile Include="src\Core\VertexArray.cpp" />
     <ClCompile Include="src\Core\WindowContext.cpp" />
     <ClCompile Include="src\buildImGui.cpp" />

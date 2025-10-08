@@ -59,11 +59,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <DisableSpecificWarnings>4819;4006;26495;4133;4996;4201;26439;4312;26812;4244;4267;4702;4789;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\HOF-Core\src;..\HOF-Core\Dependencies\GLEW\include;..\HOF-Core\Dependencies\GLFW\include;..\HOF-Core\Dependencies\imgui;..\HOF-Core\Dependencies\glm;..\HOF-Core\Dependencies\entt\include;..\HOF-Core\Dependencies\TinyObjLoader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/EHsc /MTd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -72,7 +72,7 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy "../Demo/resource" "../bin/Debug-windows-x86_64/Demo/resource" /e /h /k /y /i
-IF EXIST "..\HOF-Core\Dependencies\assimp\Debug\assimp-vc142-mtd.dll"\ (xcopy /Q /E /Y /I "..\HOF-Core\Dependencies\assimp\Debug\assimp-vc142-mtd.dll" "..\bin\Debug-windows-x86_64\Demo" &gt; nul) ELSE (xcopy /Q /Y /I "..\HOF-Core\Dependencies\assimp\Debug\assimp-vc142-mtd.dll" "..\bin\Debug-windows-x86_64\Demo" &gt; nul)</Command>
+xcopy "../HOF-Core/Dependencies/assimp/Debug/assimp-vc142-mtd.dll" "../bin/Debug-windows-x86_64/Demo" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -80,14 +80,14 @@ IF EXIST "..\HOF-Core\Dependencies\assimp\Debug\assimp-vc142-mtd.dll"\ (xcopy /Q
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <DisableSpecificWarnings>4819;4006;26495;4133;4996;4201;26439;4312;26812;4244;4267;4702;4789;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\HOF-Core\src;..\HOF-Core\Dependencies\GLEW\include;..\HOF-Core\Dependencies\GLFW\include;..\HOF-Core\Dependencies\imgui;..\HOF-Core\Dependencies\glm;..\HOF-Core\Dependencies\entt\include;..\HOF-Core\Dependencies\TinyObjLoader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/EHsc /MT %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -97,7 +97,7 @@ IF EXIST "..\HOF-Core\Dependencies\assimp\Debug\assimp-vc142-mtd.dll"\ (xcopy /Q
     </Link>
     <PostBuildEvent>
       <Command>xcopy "../Demo/resource" "../bin/Release-windows-x86_64/Demo/resource" /e /h /k /y /i
-IF EXIST "..\HOF-Core\Dependencies\assimp\Release\assimp-vc142-mt.dll"\ (xcopy /Q /E /Y /I "..\HOF-Core\Dependencies\assimp\Release\assimp-vc142-mt.dll" "..\bin\Release-windows-x86_64\Demo" &gt; nul) ELSE (xcopy /Q /Y /I "..\HOF-Core\Dependencies\assimp\Release\assimp-vc142-mt.dll" "..\bin\Release-windows-x86_64\Demo" &gt; nul)</Command>
+xcopy "../HOF-Core/Dependencies/assimp/Release/assimp-vc142-mt.dll" "../bin/Release-windows-x86_64/Demo" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

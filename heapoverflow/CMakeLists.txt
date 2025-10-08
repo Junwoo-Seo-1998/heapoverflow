@@ -206,7 +206,7 @@ add_dependencies(Demo CopyResources)
 if(WIN32)
     add_custom_command(TARGET Demo POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy
-            "$<$<CONFIG:Debug>:${ASSIMP_DLL_DEBUG}>$<$<CONFIG:Release>:${ASSIMP_DLL_RELEASE}>"
+            "$<IF:$<CONFIG:Debug>,${ASSIMP_DLL_DEBUG},${ASSIMP_DLL_RELEASE}>"
             "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
         COMMENT "Copying Assimp DLL"
     )

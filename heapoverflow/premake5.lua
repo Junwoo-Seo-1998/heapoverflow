@@ -33,14 +33,11 @@ project "HOF-Core"
     kind "StaticLib"
     language "C++"
     cppdialect "c++17"
-    staticruntime "on"
     warnings "Extra"
 
     targetdir ("bin/"..outputdir.."/%{prj.name}")
     objdir("bin-int/"..outputdir.."/%{prj.name}")
 
-
-    
     files
     {
         "%{prj.name}/src/**.h",
@@ -48,11 +45,6 @@ project "HOF-Core"
         "%{prj.name}/Dependencies/glm/glm/**.hpp",
         "%{prj.name}/Dependencies/glm/glm/**.inl",
         "%{prj.name}/Dependencies/entt/include/**.hpp",
-    }
-    removefiles 
-    { 
-        "%{prj.name}/src/Core/Utils/ObjLoader.cpp",
-        "%{prj.name}/src/Core/Utils/ObjLoader.h",
     }
 
     includedirs
@@ -83,36 +75,34 @@ project "HOF-Core"
     }
     disablewarnings { "4819", "4006","26495","4133","4996","4201","26439","4312","26812","4244","4267","4702","4789" }
     linkoptions { "-IGNORE:4006" }
+    buildoptions { "/EHsc" }
 
     filter "system:windows"
         systemversion "latest"
 
     filter "configurations:Debug"
-        runtime "Debug"
+        defines { "_DEBUG" }
         symbols "on"
-
+        buildoptions { "/MTd" }
         links
         {
             "HOF-Core/Dependencies/assimp/Debug/assimp-vc142-mtd.lib"
         }
 
-
     filter "configurations:Release"
-        runtime "Release"
+        defines { "NDEBUG" }
         optimize "on"
-
+        buildoptions { "/MT" }
         links
         {
             "HOF-Core/Dependencies/assimp/Release/assimp-vc142-mt.lib"
         }
 
-
 project "Demo"
     location "Demo"
-    kind "consoleApp"
+    kind "ConsoleApp"
     language "C++"
     cppdialect "c++17"
-    staticruntime "on"
     warnings "Extra"
 
     targetdir ("bin/"..outputdir.."/%{prj.name}")
@@ -139,7 +129,6 @@ project "Demo"
     links
     {
         "HOF-Core",
-        
     }
     defines
     {
@@ -148,26 +137,31 @@ project "Demo"
         "_CRT_SECURE_NO_WARNINGS"
     }
     disablewarnings { "4819", "4006","26495","4133","4996","4201","26439","4312","26812","4244","4267","4702","4789" }
+    buildoptions { "/EHsc" }
+
     filter "system:windows"
         systemversion "latest"
 
     filter "configurations:Debug"
-        runtime "Debug"
+        defines { "_DEBUG" }
         symbols "on"
-        postbuildcommands 
-		{
-            ('xcopy "../Demo/resource" "%{cfg.targetdir}/resource" /e /h /k /y /i'),
-			('{COPY} "../HOF-Core/Dependencies/assimp/Debug/assimp-vc142-mtd.dll" "%{cfg.targetdir}"')
-		}
+        buildoptions { "/MTd" }
 
     filter "configurations:Release"
-        runtime "Release"
+        defines { "NDEBUG" }
         optimize "on"
+        buildoptions { "/MT" }
 
+    filter { "action:vs*", "configurations:Debug" }
         postbuildcommands 
-		{
-            ('xcopy "../Demo/resource" "%{cfg.targetdir}/resource" /e /h /k /y /i'),
-			('{COPY} "../HOF-Core/Dependencies/assimp/Release/assimp-vc142-mt.dll" "%{cfg.targetdir}"')
-		}
+        {
+            'xcopy "../Demo/resource" "%{cfg.targetdir}/resource" /e /h /k /y /i',
+            'xcopy "../HOF-Core/Dependencies/assimp/Debug/assimp-vc142-mtd.dll" "%{cfg.targetdir}" /y'
+        }
 
-
+    filter { "action:vs*", "configurations:Release" }
+        postbuildcommands 
+        {
+            'xcopy "../Demo/resource" "%{cfg.targetdir}/resource" /e /h /k /y /i',
+            'xcopy "../HOF-Core/Dependencies/assimp/Release/assimp-vc142-mt.dll" "%{cfg.targetdir}" /y'
+        }
