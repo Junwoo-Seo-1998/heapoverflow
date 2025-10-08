@@ -19,7 +19,7 @@ IncludeDir["imgui"]="HOF-Core/Dependencies/imgui"
 IncludeDir["glm"]="HOF-Core/Dependencies/glm"
 IncludeDir["entt"] = "HOF-Core/Dependencies/entt/include"
 IncludeDir["TinyObjLoader"] = "HOF-Core/Dependencies/TinyObjLoader/include"
-IncludeDir["Assimp"] = "HOF-Core/Dependencies/assimp/include"
+
 
 group "Dependencies"
     include "HOF-Core/Dependencies/GLEW"
@@ -56,7 +56,7 @@ project "HOF-Core"
         "%{IncludeDir.glm}",
         "%{IncludeDir.entt}",
         "%{IncludeDir.TinyObjLoader}",
-        "%{IncludeDir.Assimp}"
+
     }
 
     links
@@ -84,19 +84,13 @@ project "HOF-Core"
         defines { "_DEBUG" }
         symbols "on"
         buildoptions { "/MTd" }
-        links
-        {
-            "HOF-Core/Dependencies/assimp/Debug/assimp-vc142-mtd.lib"
-        }
+
 
     filter "configurations:Release"
         defines { "NDEBUG" }
         optimize "on"
         buildoptions { "/MT" }
-        links
-        {
-            "HOF-Core/Dependencies/assimp/Release/assimp-vc142-mt.lib"
-        }
+
 
 project "Demo"
     location "Demo"
@@ -155,13 +149,11 @@ project "Demo"
     filter { "action:vs*", "configurations:Debug" }
         postbuildcommands 
         {
-            'xcopy "../Demo/resource" "%{cfg.targetdir}/resource" /e /h /k /y /i',
-            'xcopy "../HOF-Core/Dependencies/assimp/Debug/assimp-vc142-mtd.dll" "%{cfg.targetdir}" /y'
+            'xcopy "../Demo/resource" "%{cfg.targetdir}/resource" /e /h /k /y /i'
         }
 
     filter { "action:vs*", "configurations:Release" }
         postbuildcommands 
         {
-            'xcopy "../Demo/resource" "%{cfg.targetdir}/resource" /e /h /k /y /i',
-            'xcopy "../HOF-Core/Dependencies/assimp/Release/assimp-vc142-mt.dll" "%{cfg.targetdir}" /y'
+            'xcopy "../Demo/resource" "%{cfg.targetdir}/resource" /e /h /k /y /i'
         }

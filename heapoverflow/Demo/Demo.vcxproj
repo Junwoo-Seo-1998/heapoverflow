@@ -71,8 +71,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "../Demo/resource" "../bin/Debug-windows-x86_64/Demo/resource" /e /h /k /y /i
-xcopy "../HOF-Core/Dependencies/assimp/Debug/assimp-vc142-mtd.dll" "../bin/Debug-windows-x86_64/Demo" /y</Command>
+      <Command>xcopy "../Demo/resource" "../bin/Debug-windows-x86_64/Demo/resource" /e /h /k /y /i</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -96,8 +95,7 @@ xcopy "../HOF-Core/Dependencies/assimp/Debug/assimp-vc142-mtd.dll" "../bin/Debug
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "../Demo/resource" "../bin/Release-windows-x86_64/Demo/resource" /e /h /k /y /i
-xcopy "../HOF-Core/Dependencies/assimp/Release/assimp-vc142-mt.dll" "../bin/Release-windows-x86_64/Demo" /y</Command>
+      <Command>xcopy "../Demo/resource" "../bin/Release-windows-x86_64/Demo/resource" /e /h /k /y /i</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

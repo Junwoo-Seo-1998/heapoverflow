@@ -1377,9 +1377,6 @@
     <ClInclude Include="src\Core\ShaderManager.h">
       <Filter>src\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Utils\AssimpLoaderHelper.h">
-      <Filter>src\Core\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="src\Core\Utils\FileSystem.h">
       <Filter>src\Core\Utils</Filter>
     </ClInclude>
@@ -1483,9 +1480,6 @@
     </ClCompile>
     <ClCompile Include="src\Core\ShaderManager.cpp">
       <Filter>src\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Core\Utils\AssimpLoaderHelper.cpp">
-      <Filter>src\Core\Utils</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\Utils\ObjLoader.cpp">
       <Filter>src\Core\Utils</Filter>

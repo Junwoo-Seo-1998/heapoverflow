@@ -33,7 +33,7 @@ endif()
 set(GLM_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/HOF-Core/Dependencies/glm)
 set(ENTT_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/HOF-Core/Dependencies/entt/include)
 set(TINYOBJ_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/HOF-Core/Dependencies/TinyObjLoader/include)
-set(ASSIMP_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/HOF-Core/Dependencies/assimp/include)
+
 
 # --- Dependency Library Targets ---
 
@@ -120,12 +120,7 @@ target_include_directories(ImGui PUBLIC HOF-Core/Dependencies/imgui)
 add_library(TinyObjLoader STATIC HOF-Core/Dependencies/TinyObjLoader/tiny_obj_loader.cc)
 target_include_directories(TinyObjLoader PUBLIC ${TINYOBJ_INCLUDE_DIR})
 
-# Assimp libraries (pre-built for MSVC)
-set(ASSIMP_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/HOF-Core/Dependencies/assimp)
-set(ASSIMP_LIB_DEBUG ${ASSIMP_LIB_DIR}/Debug/assimp-vc142-mtd.lib)
-set(ASSIMP_LIB_RELEASE ${ASSIMP_LIB_DIR}/Release/assimp-vc142-mt.lib)
-set(ASSIMP_DLL_DEBUG ${ASSIMP_LIB_DIR}/Debug/assimp-vc142-mtd.dll)
-set(ASSIMP_DLL_RELEASE ${ASSIMP_LIB_DIR}/Release/assimp-vc142-mt.dll)
+
 
 # --- HOF-Core Project ---
 file(GLOB_RECURSE HOF_CORE_SOURCES 
@@ -136,11 +131,7 @@ file(GLOB_RECURSE HOF_CORE_SOURCES
 # list(FILTER HOF_CORE_SOURCES EXCLUDE REGEX ".*ObjLoader.cpp")
 # list(FILTER HOF_CORE_SOURCES EXCLUDE REGEX ".*ObjLoader.h")
 
-# Exclude Assimp for non-Windows builds as only Windows libs are provided
-if(NOT MSVC)
-    list(FILTER HOF_CORE_SOURCES EXCLUDE REGEX ".*AssimpLoaderHelper.cpp")
-    list(FILTER HOF_CORE_SOURCES EXCLUDE REGEX ".*AssimpLoaderHelper.h")
-endif()
+
 
 add_library(HOF-Core STATIC ${HOF_CORE_SOURCES})
 
@@ -152,7 +143,7 @@ target_include_directories(HOF-Core PUBLIC
     ${GLM_INCLUDE_DIR}
     ${ENTT_INCLUDE_DIR}
     $<TARGET_PROPERTY:TinyObjLoader,INTERFACE_INCLUDE_DIRECTORIES>
-    ${ASSIMP_INCLUDE_DIR}
+
 )
 
 target_link_libraries(HOF-Core PUBLIC
@@ -169,13 +160,7 @@ else()
 endif()
 
 
-# Link correct Assimp library based on configuration (for MSVC only)
-if(MSVC)
-    target_link_libraries(HOF-Core PUBLIC
-        $<$<CONFIG:Debug>:${ASSIMP_LIB_DEBUG}>
-        $<$<CONFIG:Release>:${ASSIMP_LIB_RELEASE}>
-    )
-endif()
+
 
 target_compile_definitions(HOF-Core PUBLIC
     GLFW_INCLUDE_NONE
@@ -202,12 +187,4 @@ add_custom_target(CopyResources ALL
 )
 add_dependencies(Demo CopyResources)
 
-# Copy Assimp DLLs for Windows
-if(WIN32)
-    add_custom_command(TARGET Demo POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-            "$<IF:$<CONFIG:Debug>,${ASSIMP_DLL_DEBUG},${ASSIMP_DLL_RELEASE}>"
-            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
-        COMMENT "Copying Assimp DLL"
-    )
-endif()
+
